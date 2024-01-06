@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -7,13 +9,19 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final _formKey = GlobalKey<FormState>();
   final _employeeNameController = TextEditingController();
   final _customerNameController = TextEditingController();
   String _generatorModel = '';
-
-  MyApp({super.key});
+  XFile? _image;
 
   @override
   Widget build(BuildContext context) {
@@ -28,49 +36,15 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextFormField(
-                  controller: _employeeNameController,
-                  decoration: const InputDecoration(labelText: 'Employee Name'),
-                  validator: (value) {
-                    if (value?.isEmpty ?? true) {
-                      return 'Please enter employee name';
-                    }
-                    return null;
+                // ... other form fields ...
+                ElevatedButton(
+                  onPressed: () async {
+                    _image = await ImagePicker()
+                        .pickImage(source: ImageSource.gallery);
+                    setState(() {});
                   },
+                  child: const Text('Pick Image'),
                 ),
-                TextFormField(
-                  controller: _customerNameController,
-                  decoration: const InputDecoration(labelText: 'Customer Name'),
-                  validator: (value) {
-                    if (value?.isEmpty ?? true) {
-                      return 'Please enter customer name';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-                const Text('Generator Model'),
-                RadioListTile(
-                  title: const Text('Model A'),
-                  value: 'Model A',
-                  groupValue: _generatorModel,
-                  onChanged: (value) {
-                    // setState(() {
-                    //   _generatorModel = value!;
-                    // });
-                  },
-                ),
-                RadioListTile(
-                  title: const Text('Model B'),
-                  value: 'Model B',
-                  groupValue: _generatorModel,
-                  onChanged: (value) {
-                    // setState(() {
-                    //   _generatorModel = value!;
-                    // });
-                  },
-                ),
-                const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState != null &&
@@ -91,18 +65,18 @@ class MyApp extends StatelessWidget {
   Future<void> generatePdf(BuildContext context) async {
     final pdf = pw.Document();
 
+    final imageProvider = pw.MemoryImage(
+      await _image!.readAsBytes(),
+    );
+
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) => pw.Center(
           child: pw.Column(
             mainAxisAlignment: pw.MainAxisAlignment.center,
             children: [
-              pw.Text('Employee Name: ${_employeeNameController.text}',
-                  style: const pw.TextStyle(fontSize: 20)),
-              pw.Text('Customer Name: ${_customerNameController.text}',
-                  style: const pw.TextStyle(fontSize: 20)),
-              pw.Text('Generator Model: $_generatorModel',
-                  style: const pw.TextStyle(fontSize: 20)),
+              // ... other text fields ...
+              pw.Image(imageProvider),
             ],
           ),
         ),
