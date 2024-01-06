@@ -38,6 +38,65 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Employee Name TextField
+                TextFormField(
+                  controller: _employeeNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Employee Name',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the employee name';
+                    }
+                    return null;
+                  },
+                ),
+                // Customer Name TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Customer Name',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the customer name';
+                    }
+                    return null;
+                  },
+                ),
+                // Generator Name Radio Buttons
+                RadioListTile<String>(
+                  title: const Text('Gen1'),
+                  value: 'Gen1',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('Gen2'),
+                  value: 'Gen2',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('Gen3'),
+                  value: 'Gen3',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                // ... other form fields ...
+                // Image and PDF generation buttons
                 // ... other form fields ...
                 ElevatedButton(
                   onPressed: () async {
@@ -83,6 +142,11 @@ class _MyAppState extends State<MyApp> {
       await _image2!.readAsBytes(),
     );
 
+    // Fetch the data from the form
+    String employeeName = _employeeNameController.text;
+    String customerName = _customerNameController.text;
+    String generatorModel = _generatorModel;
+
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) => pw.Row(
@@ -94,10 +158,13 @@ class _MyAppState extends State<MyApp> {
                 mainAxisAlignment: pw.MainAxisAlignment.center,
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: [
-                  pw.Text('Employee Name',
+                  pw.Text('Employee Name: $employeeName',
                       style: const pw.TextStyle(
                           fontSize: 20)), // Increase the fontSize here
-                  pw.Text('Customer Name',
+                  pw.Text('Customer Name: $customerName',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Generator Model: $generatorModel',
                       style: const pw.TextStyle(
                           fontSize: 20)), // Increase the fontSize here
                   // Resized Image
