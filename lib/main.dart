@@ -26,6 +26,14 @@ class _MyAppState extends State<MyApp> {
   XFile? _image1;
   XFile? _image2;
 
+  // checkbox values
+  bool _is5kVAChecked = false;
+  bool _is7_5kVAChecked = false;
+  bool _is10kVAChecked = false;
+  bool _is12_5kVAChecked = false;
+  bool _is15kVAChecked = false;
+  bool _is20kVAChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -210,6 +218,217 @@ class _MyAppState extends State<MyApp> {
                     });
                   },
                 ),
+
+                // form part 1 over
+                // form part 2 starts here
+                // Contact person TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter generator information',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the generator information';
+                    }
+                    return null;
+                  },
+                ),
+
+                // generator type Radio Buttons
+                const Text('Generator type'),
+                RadioListTile<String>(
+                  title: const Text('Portable (Upto 5 kVA)'),
+                  value: '1',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('LHP 7.5 kVA to 320 kVA'),
+                  value: '2',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('HHP 380 kVA to 2000 kVA'),
+                  value: '3',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('HHP - 380 kVA & Above'),
+                  value: '4',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('Open OG ( 5 kVA to 15 kVA)'),
+                  value: '5',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('Other'),
+                  value: '6',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+
+                // KVA checkboxes
+                const Text('KVA rating'),
+                CheckboxListTile(
+                  title: const Text('5 kVA'),
+                  value: _is5kVAChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _is5kVAChecked = value ?? false;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  title: const Text('7.5 kVA'),
+                  value: _is7_5kVAChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _is7_5kVAChecked = value ?? false;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  title: const Text('10 kVA'),
+                  value: _is10kVAChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _is10kVAChecked = value ?? false;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  title: const Text('12.5 kVA'),
+                  value: _is12_5kVAChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _is12_5kVAChecked = value ?? false;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  title: const Text('15 kVA'),
+                  value: _is15kVAChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _is15kVAChecked = value ?? false;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  title: const Text('20 kVA'),
+                  value: _is20kVAChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _is20kVAChecked = value ?? false;
+                    });
+                  },
+                ),
+
+                // Generator Name Radio Buttons
+                const Text('Phase'),
+                RadioListTile<String>(
+                  title: const Text('1 phase'),
+                  value: '1',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('3 phase'),
+                  value: '3',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+
+                // Generator Name Radio Buttons
+                const Text('Breaker?'),
+                RadioListTile<String>(
+                  title: const Text('Yes'),
+                  value: 'Yes',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('No'),
+                  value: 'No',
+                  groupValue: _generatorModel,
+                  onChanged: (value) {
+                    setState(() {
+                      _generatorModel = value!;
+                    });
+                  },
+                ),
+
+                // price TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter price',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the price';
+                    }
+                    return null;
+                  },
+                ),
+
+                // remarks TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter remarks',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter remarks';
+                    }
+                    return null;
+                  },
+                ),
+
                 // ... other form fields ...
                 // Image and PDF generation buttons
                 // ... other form fields ...
