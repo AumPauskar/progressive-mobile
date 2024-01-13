@@ -22,6 +22,7 @@ class _MyAppState extends State<MyApp> {
   final _employeeNameController = TextEditingController();
   final _customerNameController = TextEditingController();
   String _generatorModel = '';
+  String _state = '';
   XFile? _image1;
   XFile? _image2;
 
@@ -33,7 +34,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Generate PDF'),
         ),
         body: Center(
-          child: Form(
+          child: SingleChildScrollView(
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +65,121 @@ class _MyAppState extends State<MyApp> {
                     return null;
                   },
                 ),
+                // Address TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter address',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the address';
+                    }
+                    return null;
+                  },
+                ),
+
+                // City TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter city',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the city name';
+                    }
+                    return null;
+                  },
+                ),
+
+                // state TextField
+                const Text('Select State'),
+                RadioListTile<String>(
+                  title: const Text('Karnataka'),
+                  value: 'Karnataka',
+                  groupValue: _state,
+                  onChanged: (value) {
+                    setState(() {
+                      _state = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('Maharashtra'),
+                  value: 'Maharashtra',
+                  groupValue: _state,
+                  onChanged: (value) {
+                    setState(() {
+                      _state = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('Goa'),
+                  value: 'Goa',
+                  groupValue: _state,
+                  onChanged: (value) {
+                    setState(() {
+                      _state = value!;
+                    });
+                  },
+                ),
+                RadioListTile<String>(
+                  title: const Text('Other'),
+                  value: 'Other',
+                  groupValue: _state,
+                  onChanged: (value) {
+                    setState(() {
+                      _state = value!;
+                    });
+                  },
+                ),
+
+                // Contact person TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter contact',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the contact';
+                    }
+                    return null;
+                  },
+                ),
+
+                // phone number TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter phone number',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the phone number';
+                    }
+                    return null;
+                  },
+                ),
+
+                // email TextField
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter email',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the email';
+                    }
+                    return null;
+                  },
+                ),
+
                 // Generator Name Radio Buttons
+                const Text('Select Generator Model'),
                 RadioListTile<String>(
                   title: const Text('Gen1'),
                   value: 'Gen1',
@@ -146,6 +261,7 @@ class _MyAppState extends State<MyApp> {
     String employeeName = _employeeNameController.text;
     String customerName = _customerNameController.text;
     String generatorModel = _generatorModel;
+    String state = _state;
 
     pdf.addPage(
       pw.Page(
