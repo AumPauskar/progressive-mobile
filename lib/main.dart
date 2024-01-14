@@ -21,6 +21,14 @@ class _MyAppState extends State<MyApp> {
   final _formKey = GlobalKey<FormState>();
   final _employeeNameController = TextEditingController();
   final _customerNameController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _cityController = TextEditingController();
+  final _contactPersonController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _generatorInformationController = TextEditingController();
+  final _priceController = TextEditingController();
+  final _remarksController = TextEditingController();
   String _generatorModel = '';
   String _state = '';
   XFile? _image1;
@@ -75,7 +83,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 // Address TextField
                 TextFormField(
-                  controller: _customerNameController,
+                  controller: _addressController,
                   decoration: const InputDecoration(
                     labelText: 'Enter address',
                   ),
@@ -89,7 +97,7 @@ class _MyAppState extends State<MyApp> {
 
                 // City TextField
                 TextFormField(
-                  controller: _customerNameController,
+                  controller: _cityController,
                   decoration: const InputDecoration(
                     labelText: 'Enter city',
                   ),
@@ -146,7 +154,7 @@ class _MyAppState extends State<MyApp> {
 
                 // Contact person TextField
                 TextFormField(
-                  controller: _customerNameController,
+                  controller: _contactPersonController,
                   decoration: const InputDecoration(
                     labelText: 'Enter contact',
                   ),
@@ -160,7 +168,7 @@ class _MyAppState extends State<MyApp> {
 
                 // phone number TextField
                 TextFormField(
-                  controller: _customerNameController,
+                  controller: _phoneNumberController,
                   decoration: const InputDecoration(
                     labelText: 'Enter phone number',
                   ),
@@ -174,7 +182,7 @@ class _MyAppState extends State<MyApp> {
 
                 // email TextField
                 TextFormField(
-                  controller: _customerNameController,
+                  controller: _emailController,
                   decoration: const InputDecoration(
                     labelText: 'Enter email',
                   ),
@@ -221,9 +229,9 @@ class _MyAppState extends State<MyApp> {
 
                 // form part 1 over
                 // form part 2 starts here
-                // Contact person TextField
+                // generator info
                 TextFormField(
-                  controller: _customerNameController,
+                  controller: _generatorInformationController,
                   decoration: const InputDecoration(
                     labelText: 'Enter generator information',
                   ),
@@ -403,7 +411,7 @@ class _MyAppState extends State<MyApp> {
 
                 // price TextField
                 TextFormField(
-                  controller: _customerNameController,
+                  controller: _priceController,
                   decoration: const InputDecoration(
                     labelText: 'Enter price',
                   ),
@@ -417,7 +425,7 @@ class _MyAppState extends State<MyApp> {
 
                 // remarks TextField
                 TextFormField(
-                  controller: _customerNameController,
+                  controller: _remarksController,
                   decoration: const InputDecoration(
                     labelText: 'Enter remarks',
                   ),
