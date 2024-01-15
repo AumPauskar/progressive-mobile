@@ -30,6 +30,8 @@ class _MyAppState extends State<MyApp> {
   final _priceController = TextEditingController();
   final _remarksController = TextEditingController();
   String _generatorModel = '';
+  String _generatorPhaseController = '';
+  String _generatorBreakerController = '';
   String _state = '';
   XFile? _image1;
   XFile? _image2;
@@ -194,39 +196,6 @@ class _MyAppState extends State<MyApp> {
                   },
                 ),
 
-                // Generator Name Radio Buttons
-                const Text('Select Generator Model'),
-                RadioListTile<String>(
-                  title: const Text('Gen1'),
-                  value: 'Gen1',
-                  groupValue: _generatorModel,
-                  onChanged: (value) {
-                    setState(() {
-                      _generatorModel = value!;
-                    });
-                  },
-                ),
-                RadioListTile<String>(
-                  title: const Text('Gen2'),
-                  value: 'Gen2',
-                  groupValue: _generatorModel,
-                  onChanged: (value) {
-                    setState(() {
-                      _generatorModel = value!;
-                    });
-                  },
-                ),
-                RadioListTile<String>(
-                  title: const Text('Gen3'),
-                  value: 'Gen3',
-                  groupValue: _generatorModel,
-                  onChanged: (value) {
-                    setState(() {
-                      _generatorModel = value!;
-                    });
-                  },
-                ),
-
                 // form part 1 over
                 // form part 2 starts here
                 // generator info
@@ -368,20 +337,20 @@ class _MyAppState extends State<MyApp> {
                 RadioListTile<String>(
                   title: const Text('1 phase'),
                   value: '1',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorPhaseController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorPhaseController = value!;
                     });
                   },
                 ),
                 RadioListTile<String>(
                   title: const Text('3 phase'),
                   value: '3',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorPhaseController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorPhaseController = value!;
                     });
                   },
                 ),
@@ -391,20 +360,20 @@ class _MyAppState extends State<MyApp> {
                 RadioListTile<String>(
                   title: const Text('Yes'),
                   value: 'Yes',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorBreakerController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorBreakerController = value!;
                     });
                   },
                 ),
                 RadioListTile<String>(
                   title: const Text('No'),
                   value: 'No',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorBreakerController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorBreakerController = value!;
                     });
                   },
                 ),
