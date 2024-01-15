@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   final _generatorInformationController = TextEditingController();
   final _priceController = TextEditingController();
   final _remarksController = TextEditingController();
-  String _generatorModel = '';
+  String _generatorModelController = '';
   String _generatorPhaseController = '';
   String _generatorBreakerController = '';
   String _state = '';
@@ -217,60 +217,60 @@ class _MyAppState extends State<MyApp> {
                 RadioListTile<String>(
                   title: const Text('Portable (Upto 5 kVA)'),
                   value: '1',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorModelController = value!;
                     });
                   },
                 ),
                 RadioListTile<String>(
                   title: const Text('LHP 7.5 kVA to 320 kVA'),
                   value: '2',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorModelController = value!;
                     });
                   },
                 ),
                 RadioListTile<String>(
                   title: const Text('HHP 380 kVA to 2000 kVA'),
                   value: '3',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorModelController = value!;
                     });
                   },
                 ),
                 RadioListTile<String>(
                   title: const Text('HHP - 380 kVA & Above'),
                   value: '4',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorModelController = value!;
                     });
                   },
                 ),
                 RadioListTile<String>(
                   title: const Text('Open OG ( 5 kVA to 15 kVA)'),
                   value: '5',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorModelController = value!;
                     });
                   },
                 ),
                 RadioListTile<String>(
                   title: const Text('Other'),
                   value: '6',
-                  groupValue: _generatorModel,
+                  groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
-                      _generatorModel = value!;
+                      _generatorModelController = value!;
                     });
                   },
                 ),
@@ -427,9 +427,10 @@ class _MyAppState extends State<MyApp> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState != null &&
-                        _formKey.currentState!.validate()) {
+                    try {
                       generatePdf(context);
+                    } catch (e) {
+                      print('Error generating PDF: $e');
                     }
                   },
                   child: const Text('Generate PDF'),
@@ -454,9 +455,22 @@ class _MyAppState extends State<MyApp> {
     );
 
     // Fetch the data from the form
+    // text controller
     String employeeName = _employeeNameController.text;
     String customerName = _customerNameController.text;
-    String generatorModel = _generatorModel;
+    String address = _addressController.text;
+    String city = _cityController.text;
+    String contactPerson = _contactPersonController.text;
+    String phoneNumber = _phoneNumberController.text;
+    String email = _emailController.text;
+    String generatorInformation = _generatorInformationController.text;
+    String price = _priceController.text;
+    String remarks = _remarksController.text;
+
+    // checkbox values
+    String generatorModel = _generatorModelController;
+    String generatorPhase = _generatorPhaseController;
+    String generatorBreaker = _generatorBreakerController;
     String state = _state;
 
     pdf.addPage(
@@ -474,6 +488,30 @@ class _MyAppState extends State<MyApp> {
                       style: const pw.TextStyle(
                           fontSize: 20)), // Increase the fontSize here
                   pw.Text('Customer Name: $customerName',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Address: $address',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('City: $city',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Contact Person: $contactPerson',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Phone Number: $phoneNumber',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Email: $email',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Generator Information: $generatorInformation',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Price: $price',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Remarks: $remarks',
                       style: const pw.TextStyle(
                           fontSize: 20)), // Increase the fontSize here
                   pw.Text('Generator Model: $generatorModel',
