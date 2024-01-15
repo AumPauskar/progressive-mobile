@@ -216,7 +216,7 @@ class _MyAppState extends State<MyApp> {
                 const Text('Generator type'),
                 RadioListTile<String>(
                   title: const Text('Portable (Upto 5 kVA)'),
-                  value: '1',
+                  value: 'Portable (Upto 5 kVA)',
                   groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
@@ -226,7 +226,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 RadioListTile<String>(
                   title: const Text('LHP 7.5 kVA to 320 kVA'),
-                  value: '2',
+                  value: 'LHP 7.5 kVA to 320 kVA',
                   groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
@@ -236,7 +236,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 RadioListTile<String>(
                   title: const Text('HHP 380 kVA to 2000 kVA'),
-                  value: '3',
+                  value: 'HHP 380 kVA to 2000 kVA',
                   groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
@@ -246,7 +246,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 RadioListTile<String>(
                   title: const Text('HHP - 380 kVA & Above'),
-                  value: '4',
+                  value: 'HHP - 380 kVA & Above',
                   groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
@@ -256,7 +256,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 RadioListTile<String>(
                   title: const Text('Open OG ( 5 kVA to 15 kVA)'),
-                  value: '5',
+                  value: 'Open OG ( 5 kVA to 15 kVA)',
                   groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
@@ -266,7 +266,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 RadioListTile<String>(
                   title: const Text('Other'),
-                  value: '6',
+                  value: 'Other',
                   groupValue: _generatorModelController,
                   onChanged: (value) {
                     setState(() {
@@ -336,7 +336,7 @@ class _MyAppState extends State<MyApp> {
                 const Text('Phase'),
                 RadioListTile<String>(
                   title: const Text('1 phase'),
-                  value: '1',
+                  value: '1 phase',
                   groupValue: _generatorPhaseController,
                   onChanged: (value) {
                     setState(() {
@@ -346,7 +346,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 RadioListTile<String>(
                   title: const Text('3 phase'),
-                  value: '3',
+                  value: '3 phase',
                   groupValue: _generatorPhaseController,
                   onChanged: (value) {
                     setState(() {
@@ -515,6 +515,15 @@ class _MyAppState extends State<MyApp> {
                       style: const pw.TextStyle(
                           fontSize: 20)), // Increase the fontSize here
                   pw.Text('Generator Model: $generatorModel',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Generator Phase: $generatorPhase',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('Generator Breaker: $generatorBreaker',
+                      style: const pw.TextStyle(
+                          fontSize: 20)), // Increase the fontSize here
+                  pw.Text('State: $state',
                       style: const pw.TextStyle(
                           fontSize: 20)), // Increase the fontSize here
                   // Resized Image
