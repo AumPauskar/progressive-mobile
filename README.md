@@ -28,3 +28,20 @@ There are two ways of installing the application on your device. The first way i
 flutter build <platform> // platform can be either apk or web
 ```
 The second way is to download the pre-built application from the release page.
+
+## Build preview
+The application contains two features, one is the form that is avalaible on the home page and the other is the print layout (a pdf file) that is avalaible on the print page. The print layout generates when the **generate pdf** button is pressed.
+
+### Web
+**Home page**\
+![Home page](docs_assets\home_page_web.png)
+
+**Print page**\
+![Print page](docs_assets\print_page_web.png)
+
+### Mobile
+**Home page**\
+![Home page](docs_assets\home_page_mobile.png)
+
+**Print page**\
+![Print page](docs_assets\print_page_mobile.png)
