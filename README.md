@@ -34,14 +34,14 @@ The application contains two features, one is the form that is avalaible on the 
 
 ### Web
 **Home page**\
-![Home page](docs_assets\home_page_web.png)
+![Home page](docs_assets/home_page_web.png)
 
 **Print page**\
-![Print page](docs_assets\print_page_web.png)
+![Print page](docs_assets/print_page_web.png)
 
 ### Mobile
 **Home page**\
-![Home page](docs_assets\home_page_mobile.png)
+![Home page](docs_assets/home_page_mobile.png)
 
 **Print page**\
-![Print page](docs_assets\print_page_mobile.png)
+![Print page](docs_assets/print_page_mobile.png)
